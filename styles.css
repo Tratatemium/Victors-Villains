@@ -1,0 +1,310 @@
+body {
+  background: #e4e4e4 url("https://assets.codepen.io/3168722/bg.png");
+  color: oklch(0% 0 none / 0.82);
+  font: normal 100% Cambria, Georgia, serif;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+#page {
+  background: url("https://assets.codepen.io/3168722/rag.png") repeat-x;
+  padding: 2em 0;
+}
+
+a{
+  font: bold .975em/1.2 "Book Antiqua", "Palatino Linotype", Georgia, serif;
+  text-decoration: none;
+  color: brown;
+}
+a:hover,
+a:focus{
+  color: red;
+}
+
+i{
+  font-size: .5rem;
+}
+
+ul a,
+ol a{
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: .9rem;
+}
+ol a:focus,
+ol a:hover{
+  filter: brightness(1.2);
+}
+
+ul a{
+  background: url("https://assets.codepen.io/3168722/ornament.png") no-repeat 0 100%;
+  letter-spacing: 0.1em;
+  padding: 1em 0.5em 3em;
+  padding-top: 1em;
+  margin-bottom: -1em;
+
+  &:hover {
+
+    background-position: 50% 100%;
+
+  }
+}
+
+/*==========MAIN GRID==========*/
+/* #region Main grid */
+
+  .inner{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 8rem 10rem auto;
+    grid-template-areas: 
+      "logo nav nav"
+      "logo main main"
+      "filler main main";
+    gap: 1rem;
+    padding-right: 1.5rem;
+  }
+
+/*#endregion*/
+
+
+/*==========HEADER==========*/
+/* #region Header */
+
+  header{  
+    /* border: 1px solid red; */
+    grid-area: logo;
+    display: grid;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    background: url("https://assets.codepen.io/3168722/logo-bg.png") no-repeat 50% 0;
+  }
+
+  header a{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    align-items: center;
+  }
+
+  header a:hover,
+  header a:focus{
+    filter: sepia(100%) hue-rotate(-20deg) saturate(400%) brightness(0.9);
+  }
+
+  header a img{
+    margin:auto;
+  }
+
+/* #endregion*/
+
+
+/*==========NAVIGATION==========*/
+/* #region Navigation */
+
+  nav{
+
+    grid-area: nav;
+  }
+
+  nav ul{
+
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    padding: 0;
+  }
+
+  nav ul li{
+    display: inline-block;
+    margin:0 0;
+  }
+
+/*#endregion*/
+
+/*==========MAIN==========*/
+/* #region Main */
+
+  main{
+    grid-area: main;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    row-gap: 1rem;
+  }
+
+  section.intro h2{
+    font: normal 2em "Hoefler Text", "Baskerville old face", Garamond, "Times New Roman", serif;
+    text-align: center;
+    margin-bottom: 0.25em;
+  }
+
+  section.main h2{
+    background: url("https://assets.codepen.io/3168722/ornament.png") no-repeat 0 50%;
+    font-size: 1.4em;
+    text-transform: lowercase;
+    text-align: center;
+    margin: 0.75em 0 1em;
+  }
+
+  section.main b{
+    background: #e4e4e4 url("https://assets.codepen.io/3168722/bg.png");
+    padding:0 1rem;
+    font-weight: normal;
+  }
+
+  main .amp{
+    font-family: Baskerville, Garamond, Palatino, "Palatino Linotype", "Hoefler Text", "Times New Roman", serif;
+    font-style: italic;
+    font-weight: normal;
+  }
+
+  section.main ol{
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    padding: 0;
+  }
+
+  section.main img{
+    border-radius: .2em;
+    box-shadow: 0 .1em .2em rgba(0, 0, 0, 0.5);
+  }
+
+  main footer{
+    background: url("https://assets.codepen.io/3168722/ornament.png") 50% 0 repeat-x;
+    font-size: .65rem;
+    text-align: center;
+    padding: 3rem 0 1.5rem;
+    width: fit-content;
+    margin: auto;
+  }
+
+/*#endregion*/
+
+
+/*==========Media Middle Screen==========*/
+@media (max-width: 1300px) {
+
+  .inner{
+    grid-template-areas: 
+      "logo filler filler"
+      "logo main main"
+      "nav main main";
+  }
+
+  nav ul{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding:0 3em;
+  }
+
+  nav ul::before{
+    content: "";
+    display: block;
+    background-color: gray;
+    height: 1px;
+    width: 100%;
+  }
+
+  section.main ol{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/*==========Media Small Screen==========*/
+@media (max-width: 600px) {
+
+  .inner{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: 
+      "nav"
+      "logo"
+      "main";
+    gap: 1rem;
+    padding: 0 1.5rem;
+  }
+
+  nav ul{
+    display: grid;
+    grid-template-columns: repeat(3, 1 fr);
+    gap: 1em;
+    padding:0;
+  }
+
+  nav ul::before{
+    content: none;
+  }
+
+  nav::before{
+    content: "";
+    display: block;
+    background-color: gray;
+    height: 1px;
+    width: 100%;
+  }
+
+  ul a,
+  ul i{
+    font: .6rem Helvetica, Arial, sans-serif;
+    letter-spacing: 0;
+    padding-bottom: 3rem;
+  }
+
+  header{  
+    background: none;
+    padding: 1em;
+  }
+  
+  section.intro h2{
+    font-size: 1.5em;
+  }
+}
+
+
+
+
+
+
+  @layer reset {
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      block-size: 100%;
+    }
+
+    body {
+      margin: unset;
+      min-block-size: 100%;
+    }
+
+    picture {
+      display: contents;
+    }
+
+    img {
+      display: block;
+    }
+
+    img,
+    svg {
+      max-inline-size: 100%;
+    }
+
+    input,
+    button,
+    textarea,
+    select {
+      font: inherit;
+    }
+  }
+
+
+  /* delete this, its for git */
